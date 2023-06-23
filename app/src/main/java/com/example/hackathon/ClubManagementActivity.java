@@ -8,10 +8,12 @@ import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageSwitcher;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,6 +40,12 @@ public class ClubManagementActivity extends AppCompatActivity {
     private ImageView imageViewMainImage;
     private String clubName;
     private String clubDetail;
+    private Switch switchInternal;
+    private Switch switchVolunteer;
+
+    private boolean isInternal; // 교내 동아리 여부
+    private boolean isVolunteer; // 봉사 동아리 여부
+
     private int REQUEST_IMAGE_GALLERY;
 
     private int officialCount = 0;
@@ -56,11 +64,27 @@ public class ClubManagementActivity extends AppCompatActivity {
         buttonChooseImage = findViewById(R.id.buttonChooseImage);
         buttonRemoveOfficial = findViewById(R.id.buttonRemoveOfficial);
         imageViewMainImage = findViewById(R.id.imageViewMainImage);
-
         buttonSave = findViewById(R.id.buttonSave);
+        switchInternal = findViewById(R.id.switchInternal);
+        switchVolunteer = findViewById(R.id.switchVolunteer);
 
         firebaseAuth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = firebaseAuth.getCurrentUser();
+
+        switchInternal.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                isInternal = isChecked;
+            }
+        });
+
+        // 봉사 동아리 토글 상태 변경 리스너
+        switchVolunteer.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                isVolunteer = isChecked;
+            }
+        });
 
         // 버튼 클릭 이벤트 핸들러
         buttonChooseImage.setOnClickListener(new View.OnClickListener() {
@@ -144,8 +168,14 @@ public class ClubManagementActivity extends AppCompatActivity {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference clubRef = database.getReference("clubs");
 
+        String userId = firebaseAuth.getCurrentUser().getUid();
+
         clubName = ((EditText) findViewById(R.id.editTextClubNameActivity)).getText().toString();
         clubDetail = ((EditText) findViewById(R.id.editTextClubActivity)).getText().toString();
+
+        DatabaseReference categoriesRef = clubRef.child(clubName).child("categories");
+        categoriesRef.child("internal").setValue(isInternal);
+        categoriesRef.child("volunteer").setValue(isVolunteer);
 
 
         DatabaseReference membersRef = FirebaseDatabase.getInstance().getReference().child("users");

@@ -35,8 +35,9 @@ public class AdminMenuActivity extends AppCompatActivity {
         button_registerClub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent myIntent = new Intent(AdminMenuActivity.this, RegisterClub.class);
+                Intent myIntent = new Intent(AdminMenuActivity.this, ClubManagementActivity.class);
                 startActivity(myIntent);
+                finish();
             }
         });
 
@@ -61,6 +62,7 @@ public class AdminMenuActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(AdminMenuActivity.this, ManageClub.class);
                 startActivity(intent);
+                finish();
             }
         });
 

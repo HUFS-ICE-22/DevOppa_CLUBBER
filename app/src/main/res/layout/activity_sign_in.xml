@@ -18,6 +18,7 @@
         android:fontFamily="@font/suit_bold"
         android:text="회원가입"
         android:textColor="#000000"
+=======
         android:textSize="25dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -62,6 +63,7 @@
     <!--비밀번호 입력창과 제목을 묶은 linearlayout
         android:orientation="vertical"으로 구성을 수직으로 연결되도록 설정-->
     <LinearLayout
+
         android:id="@+id/linearLayoutstudentID"
         android:layout_width="412dp"
         android:layout_height="63dp"
@@ -99,6 +101,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
+
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

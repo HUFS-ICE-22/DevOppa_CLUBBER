@@ -3,6 +3,7 @@ package com.example.hackathon;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
@@ -12,10 +13,14 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class ClubManagementActivity extends AppCompatActivity {
 
@@ -126,8 +131,10 @@ public class ClubManagementActivity extends AppCompatActivity {
         // 동아리 정보와 동아리 임원 정보를 저장하는 로직을 구현
         // 동아리 회장이 설정한 정보를 앱 내부에 저장하거나 서버에 업로드하는 등의 처리를 수행
         String clubName = ((EditText) findViewById(R.id.editTextClubActivity)).getText().toString();
-
+        DatabaseReference membersRef = FirebaseDatabase.getInstance().getReference().child("users");
         for (int i = 0; i < layoutClubOfficials.getChildCount(); i++) {
+
+
             LinearLayout layoutOfficial = (LinearLayout) layoutClubOfficials.getChildAt(i);
             EditText editTextName = (EditText) layoutOfficial.getChildAt(1);
             EditText editTextStudentNumber = (EditText) layoutOfficial.getChildAt(2);
@@ -137,10 +144,36 @@ public class ClubManagementActivity extends AppCompatActivity {
             String studentNumber = editTextStudentNumber.getText().toString();
             String major = editTextMajor.getText().toString();
 
-            DatabaseReference officialRef = clubRef.child(clubName).push();
-            officialRef.child("name").setValue(name);
-            officialRef.child("studentID").setValue(studentNumber);
-            officialRef.child("major").setValue(major);
+            membersRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                    for (DataSnapshot memberSnapshot : dataSnapshot.getChildren()) {
+                        String uid = memberSnapshot.getKey();
+
+                        String users_name = memberSnapshot.child("name").getValue(String.class);
+                        String users_studentID = memberSnapshot.child("studentID").getValue(String.class);
+                        String users_major = memberSnapshot.child("major").getValue(String.class);
+
+                        if (name.equals(users_name) && studentNumber.equals(users_studentID) && major.equals(users_major)) {
+                            DatabaseReference officialRef = clubRef.child(clubName).push();
+                            officialRef.child(uid).setValue(name);
+
+                        }
+                    }
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+//
+//            DatabaseReference officialRef = clubRef.child(clubName).push();
+//            officialRef.child("name").setValue(name);
+//            officialRef.child("studentID").setValue(studentNumber);
+//            officialRef.child("major").setValue(major);
 
             // 동아리 임원 정보를 저장하는 로직을 구현
         }

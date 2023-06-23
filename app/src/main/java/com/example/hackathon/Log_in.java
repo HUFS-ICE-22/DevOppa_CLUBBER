@@ -77,7 +77,7 @@ public class Log_in extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
-                    Intent intent = new Intent(Log_in.this, ClubManagementActivity.class);
+                    Intent intent = new Intent(Log_in.this, BoardActivity.class);
                     startActivity(intent);
                     finish();
                 } else {

@@ -144,6 +144,7 @@ public class ClubManagementActivity extends AppCompatActivity {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference clubRef = database.getReference("clubs");
 
+        String userId = firebaseAuth.getCurrentUser().getUid();
         clubName = ((EditText) findViewById(R.id.editTextClubNameActivity)).getText().toString();
         clubDetail = ((EditText) findViewById(R.id.editTextClubActivity)).getText().toString();
 

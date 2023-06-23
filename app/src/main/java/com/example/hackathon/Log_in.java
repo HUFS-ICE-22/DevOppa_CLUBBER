@@ -72,6 +72,19 @@ public class Log_in extends AppCompatActivity {
             }
         });
 
+        firebaseAuthListener = new FirebaseAuth.AuthStateListener() {//인증정보가 변경돠면(로그인되면) 메뉴엑티비티로 이동
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if (user != null) {
+                    Intent intent = new Intent(Log_in.this, ClubManagementActivity.class);
+                    startActivity(intent);
+                    finish();
+                } else {
+                }
+            }
+        };
+
     }
 
 

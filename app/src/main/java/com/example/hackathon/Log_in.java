@@ -25,7 +25,7 @@ public class Log_in extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private FirebaseAuth.AuthStateListener firebaseAuthListener;
     EditText editText_email,editText_Password;
-    Button login_btn, signup_btn;
+    Button login_btn, signup_btn, button;
 
     FirebaseAuth mAuth=null;
 
@@ -47,8 +47,16 @@ public class Log_in extends AppCompatActivity {
         signup_btn = findViewById(R.id.button_sign_in);
         editText_email= findViewById(R.id.editText_email);
         editText_Password= findViewById(R.id.editText_Password);
+        button = findViewById(R.id.button);
 
-
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), ClubManagementActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         //회원가입 엑티비티로 이동하는 버튼
         signup_btn.setOnClickListener(new View.OnClickListener() {

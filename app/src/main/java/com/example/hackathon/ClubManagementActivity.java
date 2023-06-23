@@ -14,6 +14,9 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class ClubManagementActivity extends AppCompatActivity {
 
     private LinearLayout layoutClubOfficials;
@@ -79,9 +82,7 @@ public class ClubManagementActivity extends AppCompatActivity {
                 detailsIntent.putExtra("club_main_image_uri", selectedImageUri);
                 startActivity(detailsIntent);
                 saveClubInfo();
-
             }
-
         });
 
         // 초기에 1개의 동아리 임원 정보 입력 필드 생성
@@ -120,19 +121,28 @@ public class ClubManagementActivity extends AppCompatActivity {
     }
 
     private void saveClubInfo() {
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference clubRef = database.getReference("clubs");
         // 동아리 정보와 동아리 임원 정보를 저장하는 로직을 구현
         // 동아리 회장이 설정한 정보를 앱 내부에 저장하거나 서버에 업로드하는 등의 처리를 수행
+        String clubName = ((EditText) findViewById(R.id.editTextClubActivity)).getText().toString();
 
         for (int i = 0; i < layoutClubOfficials.getChildCount(); i++) {
             LinearLayout layoutOfficial = (LinearLayout) layoutClubOfficials.getChildAt(i);
-            EditText editTextName = (EditText) layoutOfficial.getChildAt(0);
-            EditText editTextStudentNumber = (EditText) layoutOfficial.getChildAt(1);
-            EditText editTextMajor = (EditText) layoutOfficial.getChildAt(2);
+            EditText editTextName = (EditText) layoutOfficial.getChildAt(1);
+            EditText editTextStudentNumber = (EditText) layoutOfficial.getChildAt(2);
+            EditText editTextMajor = (EditText) layoutOfficial.getChildAt(3);
 
             String name = editTextName.getText().toString();
             String studentNumber = editTextStudentNumber.getText().toString();
             String major = editTextMajor.getText().toString();
 
+            DatabaseReference officialRef = clubRef.child(clubName).push();
+            officialRef.child("name").setValue(name);
+            officialRef.child("studentID").setValue(studentNumber);
+            officialRef.child("major").setValue(major);
+
+            // 동아리 임원 정보를 저장하는 로직을 구현
         }
     }
     private void removeOfficialInputFields() {

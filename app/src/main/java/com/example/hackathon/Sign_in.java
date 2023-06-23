@@ -48,6 +48,7 @@ public class Sign_in extends AppCompatActivity {
         String email=((EditText)findViewById(R.id.editText_id)).getText().toString();
         String password=((EditText)findViewById(R.id.editText_password)).getText().toString();
         String password_confirm=((EditText)findViewById(R.id.editText_password_confirm)).getText().toString();
+        String major = ((EditText)findViewById(R.id.linearLayoutmajor)).getText().toString();
 
         if(email.length()>0 && password.length()>0 && password_confirm.length()>0){
             if(password.equals(password_confirm)){
@@ -68,6 +69,7 @@ public class Sign_in extends AppCompatActivity {
                                         mDatabase.child("users").child(uid).child("studentID").setValue(studentID);
                                         mDatabase.child("users").child(uid).child("email").setValue(email);
                                         mDatabase.child("users").child(uid).child("club president").setValue(check_club_president);
+                                        mDatabase.child("users").child(uid).child("major").setValue(major);
 
 //                                        mDatabase.child("search").child(name).child(uid).setValue("");
                                     }

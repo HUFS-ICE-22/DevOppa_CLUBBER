@@ -67,16 +67,16 @@ public class BoardActivity extends AppCompatActivity {
 
                 //데이터 스냅샷을 순회하며 그룹명을 가져와 리스트에 추가
                 for (DataSnapshot groupSnapshot : dataSnapshot.getChildren()) {
+                    String groupName = groupSnapshot.getKey();
                     DatabaseReference groupRef = groupSnapshot.getRef();
                     groupRef.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                             //그룹명 가져오기
-                            String groupName = dataSnapshot.getKey();
-//                            String groupName = dataSnapshot.child("양화대교").getValue(String.class);
-                            Log.d("MainActivity", "onCreate - onClick : " + groupName);
+                            String groupContents = dataSnapshot.child("onelistsummary").getValue(String.class);
+                            Log.d("MainActivity", "onCreate - onClick : " + groupContents);
                             //그룹명을 리스트에 추가
-                            mDatas.add(new Board(groupName,"contents","time",20,10));
+                            mDatas.add(new Board(groupName, groupContents,"time",20,10));
                             Log.d("MainActivity1", "onCreate - onClick : " + mDatas);
 
                             mAdapter.notifyDataSetChanged();
@@ -102,4 +102,5 @@ public class BoardActivity extends AppCompatActivity {
 
         Log.d("MainActivity3", "onCreate - onClick : " + mDatas);
     }
+
 }

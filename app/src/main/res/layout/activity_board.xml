@@ -67,6 +67,18 @@
                 android:layout_height="wrap_content" >
 
                 <android.widget.Button
+                    android:id="@+id/button10"
+                    android:text="전체"
+                    app:autoSizeTextType="uniform"
+
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+
+                    app:layout_constraintDimensionRatio="1.5"
+
+                    tools:ignore="MissingConstraints" />
+
+                <android.widget.Button
                     android:id="@+id/button11"
                     android:text="교내"
                     app:autoSizeTextType="uniform"
@@ -76,7 +88,8 @@
 
                     app:layout_constraintDimensionRatio="1.5"
 
-                    tools:ignore="MissingConstraints" />
+                    tools:ignore="MissingConstraints"
+                    app:layout_constraintLeft_toRightOf="@id/button10"/>
 
                 <android.widget.Button
                     android:id="@+id/button12"

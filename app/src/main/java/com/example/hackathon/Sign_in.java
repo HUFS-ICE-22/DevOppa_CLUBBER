@@ -3,6 +3,7 @@ package com.example.hackathon;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -23,6 +24,8 @@ public class Sign_in extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabase;
 
+    private int check_club_president = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +42,9 @@ public class Sign_in extends AppCompatActivity {
 
     }
     private void signUp(){//사용자가 입력한 정보들을 서버에 저장하고 데이터베이스에 항목생성
+        CheckBox checkbox = findViewById(R.id.checkbox);
         String name=((EditText)findViewById(R.id.editText_name)).getText().toString();
+        String studentID = ((EditText) findViewById(R.id.editText_studentID)).getText().toString();
         String email=((EditText)findViewById(R.id.editText_id)).getText().toString();
         String password=((EditText)findViewById(R.id.editText_password)).getText().toString();
         String password_confirm=((EditText)findViewById(R.id.editText_password_confirm)).getText().toString();
@@ -54,11 +59,17 @@ public class Sign_in extends AppCompatActivity {
                                 if (task.isSuccessful()) {
                                     // 회원가입에 성공하면 user변수에 추가
                                     FirebaseUser user=mAuth.getCurrentUser();
+                                    if (checkbox.isChecked()) {
+                                        check_club_president = 1;
+                                    }
                                     if(user!=null){
                                         String uid=user.getUid();
                                         mDatabase.child("users").child(uid).child("name").setValue(name);
+                                        mDatabase.child("users").child(uid).child("studentID").setValue(studentID);
                                         mDatabase.child("users").child(uid).child("email").setValue(email);
-                                        mDatabase.child("search").child(name).child(uid).setValue("");
+                                        mDatabase.child("users").child(uid).child("club president").setValue(check_club_president);
+
+//                                        mDatabase.child("search").child(name).child(uid).setValue("");
                                     }
                                     Log.d("TAG", "createUserWithEmail:success");
                                     Toast.makeText(Sign_in.this, "회원가입에 성공하였습니다.", Toast.LENGTH_SHORT).show();

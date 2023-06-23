@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/gray"
+    android:background="@color/faded_sky_blue"
+
     >
 
     <!--회원가입 화면의 회원가입 글자
@@ -16,7 +17,8 @@
         android:layout_marginTop="36dp"
         android:fontFamily="@font/suit_bold"
         android:text="회원가입"
-        android:textColor="#FFFFFF"
+        android:textColor="#000000"
+=======
         android:textSize="25dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -38,7 +40,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/suit_bold"
             android:text="본인이름"
-            android:textColor="@color/faded_yellow"
+            android:textColor="@color/black"
             android:textSize="15dp" />
 
         <!--이름 입력창
@@ -50,7 +52,7 @@
             android:fontFamily="@font/suit_bold"
             android:hint="name"
             android:textCursorDrawable="@null"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textColorHint="@color/light_gray"/>
 
     </LinearLayout>
@@ -61,10 +63,45 @@
     <!--비밀번호 입력창과 제목을 묶은 linearlayout
         android:orientation="vertical"으로 구성을 수직으로 연결되도록 설정-->
     <LinearLayout
+
+        android:id="@+id/linearLayoutstudentID"
+        android:layout_width="412dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="12dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayoutname"
+        tools:layout_editor_absoluteX="1dp">
+
+        <!--이름 입력창의 제목
+            android:textColor, fontFamily, textsize로 속성 설정-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/suit_bold"
+            android:text="학번"
+            android:textColor="@color/black"
+            android:textSize="15dp" />
+
+        <!--이름 입력창
+            hint, textColorHint로 사용 편의성 증가-->
+        <EditText
+            android:id="@+id/editText_studentID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/suit_bold"
+            android:hint="학번"
+            android:textColor="@color/black"
+            android:textColorHint="@color/light_gray"
+            android:textCursorDrawable="@null" />
+
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/linearLayoutid"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="100dp"
+
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -77,7 +114,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/suit_bold"
             android:text="E-mail"
-            android:textColor="@color/faded_yellow"
+            android:textColor="@color/black"
             android:textSize="15dp" />
 
         <!--e-mail 입력창
@@ -88,7 +125,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/suit_bold"
             android:hint="Email"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textColorHint="@color/light_gray"
             android:textCursorDrawable="@null" />
     </LinearLayout>
@@ -108,7 +145,7 @@
             android:layout_height="wrap_content"
             android:text="PASSWORD"
             android:fontFamily="@font/suit_bold"
-            android:textColor="@color/faded_yellow"
+            android:textColor="@color/black"
             android:textSize="15dp"/>
 
         <!--비밀번호 입력창
@@ -121,7 +158,7 @@
             android:fontFamily="@font/suit_bold"
             android:hint="password(6자리이상)"
             android:textCursorDrawable="@null"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textColorHint="@color/light_gray"/>
     </LinearLayout>
 
@@ -142,7 +179,7 @@
             android:layout_height="wrap_content"
             android:text="PASSWORD CONFIRM"
             android:fontFamily="@font/suit_bold"
-            android:textColor="@color/faded_yellow"
+            android:textColor="@color/black"
             android:textSize="15dp"/>
 
         <!--비밀번호 확인 입력창
@@ -155,7 +192,7 @@
             android:fontFamily="@font/suit_bold"
             android:hint="password confrim"
             android:textCursorDrawable="@null"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textColorHint="@color/light_gray"/>
     </LinearLayout>
 
@@ -163,9 +200,9 @@
         android:id="@+id/button_sign_in"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:text="가입하기"
+        android:layout_marginTop="136dp"
         android:fontFamily="@font/suit_bold"
+        android:text="가입하기"
         android:textColor="@color/gray"
         android:textSize="15dp"
 
@@ -173,6 +210,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayoutpwcf" />
 
+    <CheckBox
+        android:id="@+id/checkbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="임원진인가요"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.116"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayoutpwcf" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

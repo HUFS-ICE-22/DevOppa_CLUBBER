@@ -12,7 +12,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HACKATHON"
         tools:targetApi="31">
+<!--        <activity-->
+<!--            android:name=".BoardActivity"-->
+<!--            android:exported="true">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+<!--        </activity>-->
+
+        <activity android:name=".Sign_in"/>
         <activity
+<<<<<<< HEAD
             android:name=".ClubManagementActivity"
             android:exported="false" />
         <activity
@@ -20,6 +32,9 @@
             android:exported="false" />
         <activity
             android:name=".BoardActivity"
+=======
+            android:name=".Log_in"
+>>>>>>> origin/main
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,15 +43,7 @@
             </intent-filter>
 
         </activity>
-        <activity
-            android:name=".MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
     </application>
 
 </manifest>

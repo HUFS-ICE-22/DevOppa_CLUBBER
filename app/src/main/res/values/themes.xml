@@ -2,7 +2,19 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.HACKATHON" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
+
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    </style>
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- 액션바를 사용하지 않음 -->
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar" parent="AppTheme">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
     </style>
 
     <style name="Theme.HACKATHON" parent="Base.Theme.HACKATHON" />

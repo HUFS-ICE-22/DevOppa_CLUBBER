@@ -16,8 +16,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 
 public class Log_in extends AppCompatActivity {
@@ -25,7 +28,7 @@ public class Log_in extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private FirebaseAuth.AuthStateListener firebaseAuthListener;
     EditText editText_email,editText_Password;
-    Button login_btn, signup_btn;
+    Button login_btn, signup_btn, button;
 
     FirebaseAuth mAuth=null;
 
@@ -47,8 +50,16 @@ public class Log_in extends AppCompatActivity {
         signup_btn = findViewById(R.id.button_sign_in);
         editText_email= findViewById(R.id.editText_email);
         editText_Password= findViewById(R.id.editText_Password);
+        button = findViewById(R.id.button);
 
-
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), ClubManagementActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         //회원가입 엑티비티로 이동하는 버튼
         signup_btn.setOnClickListener(new View.OnClickListener() {
@@ -72,15 +83,42 @@ public class Log_in extends AppCompatActivity {
             }
         });
 
-        firebaseAuthListener = new FirebaseAuth.AuthStateListener() {//인증정보가 변경돠면(로그인되면) 메뉴엑티비티로 이동
+        firebaseAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
-                    Intent intent = new Intent(Log_in.this, BoardActivity.class);
-                    startActivity(intent);
-                    finish();
+
+                    String userId = user.getUid();
+
+                    DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference().child("users");
+                    DatabaseReference currentUserRef = usersRef.child(userId);
+
+                    currentUserRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            if (snapshot.exists()) {
+                                int clubPresident = snapshot.child("club_president").getValue(Integer.class);
+                                if (clubPresident == 1) {
+//                                    Intent intent = new Intent(Log_in.this, MenuActivity.class);
+//                                    startActivity(intent);
+//                                    finish();
+                                } else {
+                                    Intent intent = new Intent(Log_in.this, BoardActivity.class);
+                                    startActivity(intent);
+                                    finish();
+                                }
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+                            // 처리 중 오류가 발생한 경우 호출됩니다.
+                        }
+                    });
+
                 } else {
+                    // 로그아웃 상태 처리
                 }
             }
         };

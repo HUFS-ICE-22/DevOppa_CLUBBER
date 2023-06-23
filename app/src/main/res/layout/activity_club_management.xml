@@ -1,4 +1,4 @@
-<ScrollView
+<ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android">
@@ -8,6 +8,37 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="16dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="동아리 생성"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="30dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="동아리 메인 사진"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:gravity="center"/>
 
         <ImageView
             android:id="@+id/imageViewMainImage"
@@ -25,6 +56,30 @@
             android:text="갤러리에서 이미지 선택"
             android:padding="8dp" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="동아리 이름"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:gravity="center"/>
+
+
+        <EditText
+            android:id="@+id/editTextClubNameActivity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="동아리 이름을 입력하세요."
+            android:padding="8dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="동아리 활동"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:gravity="center"/>
+
         <EditText
             android:id="@+id/editTextClubActivity"
             android:layout_width="match_parent"
@@ -39,11 +94,20 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="동아리 임원 추가"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:gravity="center"/>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginTop="16dp">
+
 
             <Button
                 android:id="@+id/buttonAddOfficial"
@@ -52,8 +116,8 @@
                 android:text="임원 추가" />
 
             <Space
-                android:layout_width="170dp"
-                android:layout_height="1dp" />
+                android:layout_width="160dp"
+                android:layout_height="0dp" />
 
             <Button
                 android:id="@+id/buttonRemoveOfficial"

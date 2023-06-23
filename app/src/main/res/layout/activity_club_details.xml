@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/imageViewClubMain"
+        android:layout_width="411dp"
+        android:layout_height="245dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewClubName" />
+
+    <TextView
+        android:id="@+id/textViewClubName"
+        android:layout_width="410dp"
+        android:layout_height="82dp"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/textViewClubName_read"
+        android:layout_width="122dp"
+        android:layout_height="53dp"
+        android:gravity="center"
+        android:text="동아리 설명"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewClubMain" />
+
+    <TextView
+        android:id="@+id/textViewClubDescription"
+        android:layout_width="408dp"
+        android:layout_height="184dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewClubName_read" />
+
+    <Button
+        android:id="@+id/go_home"
+        android:layout_width="408dp"
+        android:layout_height="51dp"
+        android:layout_marginBottom="32dp"
+        android:text="뒤로가기"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/go_register"
+        android:layout_width="408dp"
+        android:layout_height="51dp"
+        android:layout_marginBottom="5dp"
+        android:text="동아리 가입 신청"
+        app:layout_constraintBottom_toTopOf="@+id/go_home"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+

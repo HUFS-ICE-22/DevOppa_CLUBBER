@@ -73,7 +73,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="90dp"
         android:fontFamily="@font/suit_bold"
-        android:text="LOG IN"
+        android:text="로그인"
         android:textColor="@color/gray"
         android:textSize="15dp"
         app:layout_constraintEnd_toEndOf="@+id/imageView10"
@@ -87,12 +87,22 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
         android:fontFamily="@font/suit_bold"
-        android:text="SIGN IN"
+        android:text="회원가입"
         android:textColor="@color/gray"
         android:textSize="15dp"
         app:layout_constraintEnd_toEndOf="@+id/button_login"
         app:layout_constraintStart_toStartOf="@+id/button_login"
         app:layout_constraintTop_toBottomOf="@+id/button_login" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="76dp"
+        android:text="Button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_sign_in" />
 
     <!--비회원으로 메뉴를 이용하고 싶을 때 사용하는 버튼(디버그용)-->
     <!--    <Button-->

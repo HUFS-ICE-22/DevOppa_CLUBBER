@@ -228,31 +228,33 @@
 
                 <android.widget.Button
                     android:id="@+id/button26"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+
                     android:text="인문"
                     app:autoSizeTextType="uniform"
 
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-
                     app:layout_constraintDimensionRatio="1.5"
 
-                    tools:ignore="MissingConstraints"
+                    app:layout_constraintLeft_toRightOf="@+id/button25"
 
-                    app:layout_constraintLeft_toRightOf="@+id/button25"/>
+                    tools:ignore="MissingConstraints"
+                     />
 
                 <android.widget.Button
                     android:id="@+id/button27"
-                    android:text="경제"
-                    app:autoSizeTextType="uniform"
-
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
 
+                    android:text="경제"
+                    app:autoSizeTextType="uniform"
+
                     app:layout_constraintDimensionRatio="1.5"
 
-                    tools:ignore="MissingConstraints"
+                    app:layout_constraintLeft_toRightOf="@+id/button26"
 
-                    app:layout_constraintLeft_toRightOf="@+id/button26"/>
+                    tools:ignore="MissingConstraints"
+                    />
 
                 <android.widget.Button
                     android:id="@+id/button28"

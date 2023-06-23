@@ -3,10 +3,14 @@ package com.example.hackathon;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -22,9 +26,14 @@ public class ClubDetailsActivity extends AppCompatActivity {
     private TextView textViewClubName;
     private TextView textViewClubDescription;
     private ImageView imageViewClubMain;
+
+    private DatabaseReference database;
+    private FirebaseAuth firebaseAuth;
+
     private Button go_home;
     private DatabaseReference clubRef;
     private String clubName;
+    private String clubDetail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,24 +46,24 @@ public class ClubDetailsActivity extends AppCompatActivity {
         imageViewClubMain = findViewById(R.id.imageViewClubMain);
         go_home = findViewById(R.id.go_home);
 
+        // Intent에서 동아리 정보 및 이미지 URI 추출
+//        Intent intent = getIntent();
+//        clubName = intent.getStringExtra("groupname");
+        clubName = "hard";
+
+        database = FirebaseDatabase.getInstance().getReference();
+        firebaseAuth = FirebaseAuth.getInstance();
+
         go_home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), Board.class);
+                Intent intent = new Intent(getApplicationContext(), BoardActivity.class);
                 startActivity(intent);
                 finish();
             }
         });
 
-        go_home.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), resister_club.class);
-                startActivity(intent);
-                finish();
-            }
-        });
-
+//        go_home.setOnClickListener(new View.OnClickListener() {
         // Intent에서 동아리 정보 및 이미지 URI 추출
         Intent intent = getIntent();
         if (intent != null) {
@@ -91,23 +100,33 @@ public class ClubDetailsActivity extends AppCompatActivity {
 //
 //        clubRef.addValueEventListener(new ValueEventListener() {
 //            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                if (dataSnapshot.exists()) {
-//                    // 데이터 스냅샷에서 필요한 정보를 추출하여 변수에 저장
-//                    String name = dataSnapshot.child("name").getValue(String.class);
-//                    String studentID = dataSnapshot.child("studentID").getValue(String.class);
-//                    String major = dataSnapshot.child("major").getValue(String.class);
-//
-//                    // 변수에 저장된 정보 활용
-//                    // ...
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//                // 데이터베이스에서 정보를 가져오는 도중 오류가 발생한 경우 처리할 내용을 작성합니다.
+//            public void onClick(View v) {
+//                Intent intent = new Intent(getApplicationContext(), resister_club.class);
+//                startActivity(intent);
+//                finish();
 //            }
 //        });
-        }
+
+        getClubs(clubName);
     }
+    private void getClubs (String clubName) {
+        database.child("clubs").child(clubName).child("clubDetail").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {//친구의 이름을 가져와서 출력
+                Log.d("MainActivity", "ValueEventListener - onDataChange : " + (String) dataSnapshot.getValue());
+
+                clubDetail = (String) dataSnapshot.getValue();
+
+                textViewClubDescription.setText(clubDetail);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {//실패시 에러메세지 출력
+                Log.e("Firebase", "Error fetching friends: " + databaseError.getMessage());
+            }
+        });
+    }
+
 }
+
+

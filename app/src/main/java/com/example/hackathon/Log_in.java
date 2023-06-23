@@ -88,6 +88,7 @@ public class Log_in extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
+
                     String userId = user.getUid();
 
                     DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference().child("users");
@@ -115,6 +116,7 @@ public class Log_in extends AppCompatActivity {
                             // 처리 중 오류가 발생한 경우 호출됩니다.
                         }
                     });
+
                 } else {
                     // 로그아웃 상태 처리
                 }

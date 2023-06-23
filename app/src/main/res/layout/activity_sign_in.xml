@@ -18,7 +18,6 @@
         android:fontFamily="@font/suit_bold"
         android:text="회원가입"
         android:textColor="#000000"
-=======
         android:textSize="25dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

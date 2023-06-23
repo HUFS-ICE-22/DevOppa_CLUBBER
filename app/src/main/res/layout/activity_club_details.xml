@@ -29,7 +29,7 @@ android:layout_height="match_parent">
 
 
     <TextView
-        android:id="@+id/textViewClubName_read"
+        android:id="@+id/textViewClub_read"
         android:layout_width="122dp"
         android:layout_height="53dp"
         android:gravity="center"
@@ -41,11 +41,12 @@ android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/textViewClubDescription"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:layout_width="408dp"
         android:layout_height="184dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewClubName_read" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewClub_read" />
 
     <Button
         android:id="@+id/go_home"

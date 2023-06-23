@@ -18,7 +18,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="동아리 생성"
-                android:textSize="30dp"
+                android:textSize="30sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -36,7 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="동아리 메인 사진"
-            android:textSize="22dp"
+            android:textSize="24sp"
             android:textStyle="bold"
             android:gravity="center"/>
 
@@ -60,7 +60,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="동아리 이름"
-            android:textSize="22dp"
+            android:textSize="24sp"
             android:textStyle="bold"
             android:gravity="center"/>
 
@@ -76,7 +76,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="동아리 활동"
-            android:textSize="22dp"
+            android:textSize="24sp"
             android:textStyle="bold"
             android:gravity="center"/>
 
@@ -98,7 +98,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="동아리 임원 추가"
-            android:textSize="22dp"
+            android:textSize="24sp"
             android:textStyle="bold"
             android:gravity="center"/>
 

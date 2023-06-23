@@ -6,4 +6,296 @@
     android:layout_height="match_parent"
     tools:context=".BoardActivity">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/statusbar"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+
+        android:layout_margin="10dp"
+
+        app:layout_constraintHeight_percent="0.1"
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="동아리 목록"
+
+            android:padding="10dp"
+
+            app:autoSizeTextType="uniform"
+
+            app:layout_constraintLeft_toLeftOf="parent"/>
+
+
+        <android.widget.Button
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+
+            app:layout_constraintDimensionRatio="1"
+
+
+            app:layout_constraintRight_toRightOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/buttons_container"
+
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+
+        app:layout_constraintHeight_percent="0.1"
+        app:layout_constraintTop_toBottomOf="@+id/statusbar">
+
+        <HorizontalScrollView
+            android:id="@+id/buttons_container1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            tools:ignore="MissingConstraints,SpeakableTextPresentCheck"
+
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+
+            app:layout_constraintHeight_percent="0.5">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <android.widget.Button
+                    android:id="@+id/button11"
+                    android:text="교내"
+                    app:autoSizeTextType="uniform"
+
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+
+                    app:layout_constraintDimensionRatio="1.5"
+
+                    tools:ignore="MissingConstraints" />
+
+                <android.widget.Button
+                    android:id="@+id/button12"
+                    android:text="교외/연합"
+                    app:autoSizeTextType="uniform"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    tools:ignore="MissingConstraints"
+
+                    app:layout_constraintLeft_toRightOf="@+id/button11"/>
+
+                <android.widget.Button
+                    android:id="@+id/button13"
+                    android:text="중앙동아리"
+                    app:autoSizeTextType="uniform"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    tools:ignore="MissingConstraints"
+
+                    app:layout_constraintLeft_toRightOf="@+id/button12"/>
+
+                <android.widget.Button
+                    android:id="@+id/button14"
+                    android:text="비중앙동아리"
+                    app:autoSizeTextType="uniform"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    tools:ignore="MissingConstraints"
+
+                    app:layout_constraintLeft_toRightOf="@+id/button13"/>
+
+                <android.widget.Button
+                    android:id="@+id/button15"
+                    android:text="학회"
+                    app:autoSizeTextType="uniform"
+
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+
+                    app:layout_constraintDimensionRatio="1.5"
+
+                    tools:ignore="MissingConstraints"
+
+                    app:layout_constraintLeft_toRightOf="@+id/button14"/>
+
+                <android.widget.Button
+                    android:id="@+id/button16"
+                    android:text="과 제한 없음"
+                    app:autoSizeTextType="uniform"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+
+                    tools:ignore="MissingConstraints"
+
+                    app:layout_constraintLeft_toRightOf="@+id/button15"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </HorizontalScrollView>
+
+        <HorizontalScrollView
+            android:id="@+id/buttons_container2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            tools:ignore="SpeakableTextPresentCheck"
+
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+
+            app:layout_constraintHeight_percent="0.5"
+            app:layout_constraintTop_toBottomOf="@+id/buttons_container1">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <android.widget.Button
+                    android:id="@+id/button21"
+                    android:text="봉사"
+                    app:autoSizeTextType="uniform"
+
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+
+                    app:layout_constraintDimensionRatio="1.5"
+
+                    tools:ignore="MissingConstraints" />
+
+                <android.widget.Button
+                    android:id="@+id/button22"
+                    android:text="사진"
+                    app:autoSizeTextType="uniform"
+
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+
+                    app:layout_constraintDimensionRatio="1.5"
+
+                    tools:ignore="MissingConstraints"
+
+                    app:layout_constraintLeft_toRightOf="@+id/button21"/>
+
+                <android.widget.Button
+                    android:id="@+id/button23"
+                    android:text="예술"
+                    app:autoSizeTextType="uniform"
+
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+
+                    app:layout_constraintDimensionRatio="1.5"
+
+                    tools:ignore="MissingConstraints"
+
+                    app:layout_constraintLeft_toRightOf="@+id/button22"/>
+
+                <android.widget.Button
+                    android:id="@+id/button24"
+                    android:text="친목"
+                    app:autoSizeTextType="uniform"
+
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+
+                    app:layout_constraintDimensionRatio="1.5"
+
+                    tools:ignore="MissingConstraints"
+
+                    app:layout_constraintLeft_toRightOf="@+id/button23"/>
+
+                <android.widget.Button
+                    android:id="@+id/button25"
+                    android:text="토론"
+                    app:autoSizeTextType="uniform"
+
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+
+                    app:layout_constraintDimensionRatio="1.5"
+
+                    tools:ignore="MissingConstraints"
+
+                    app:layout_constraintLeft_toRightOf="@+id/button24"/>
+
+                <android.widget.Button
+                    android:id="@+id/button26"
+                    android:text="인문"
+                    app:autoSizeTextType="uniform"
+
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+
+                    app:layout_constraintDimensionRatio="1.5"
+
+                    tools:ignore="MissingConstraints"
+
+                    app:layout_constraintLeft_toRightOf="@+id/button25"/>
+
+                <android.widget.Button
+                    android:id="@+id/button27"
+                    android:text="경제"
+                    app:autoSizeTextType="uniform"
+
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+
+                    app:layout_constraintDimensionRatio="1.5"
+
+                    tools:ignore="MissingConstraints"
+
+                    app:layout_constraintLeft_toRightOf="@+id/button26"/>
+
+                <android.widget.Button
+                    android:id="@+id/button28"
+                    android:text="언어"
+                    app:autoSizeTextType="uniform"
+
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+
+                    app:layout_constraintDimensionRatio="1.5"
+
+                    tools:ignore="MissingConstraints"
+
+                    app:layout_constraintLeft_toRightOf="@+id/button27"/>
+
+                <android.widget.Button
+                    android:id="@+id/button29"
+                    android:text="공학"
+                    app:autoSizeTextType="uniform"
+
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+
+                    app:layout_constraintDimensionRatio="1.5"
+
+                    tools:ignore="MissingConstraints"
+
+                    app:layout_constraintLeft_toRightOf="@+id/button28"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </HorizontalScrollView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_margin="10dp"
+
+        app:layout_constraintTop_toBottomOf="@id/buttons_container">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

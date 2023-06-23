@@ -18,14 +18,18 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="16dp"
-        android:text="갤러리에서 이미지 선택" />
+        android:text="갤러리에서 이미지 선택"
+        android:padding="8dp"
+        />
 
     <EditText
         android:id="@+id/editTextClubActivity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:hint="동아리 활동에 대한 정보를 입력하세요." />
+        android:hint="동아리 활동에 대한 정보를 입력하세요."
+        android:padding="8dp"
+        />
 
     <LinearLayout
         android:id="@+id/layoutClubOfficials"

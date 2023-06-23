@@ -40,11 +40,13 @@ public class ClubManagementActivity extends AppCompatActivity {
     private String clubDetail;
     private int REQUEST_IMAGE_GALLERY;
 
-    private int officialCount = 0;
+    private DatabaseReference database;
+//    private FirebaseAuth firebaseAuth;
 
+    private int officialCount = 0;
     private int count = 0;
 
-    DatabaseReference officialRef;
+//    DatabaseReference officialRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,12 +98,12 @@ public class ClubManagementActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 saveClubInfo();
-                Intent detailsIntent = new Intent(ClubManagementActivity.this, ClubDetailsActivity.class);
-                detailsIntent.putExtra("club_name", clubName);
-                detailsIntent.putExtra("club_description", clubDetail);
-                detailsIntent.putExtra("club_main_image_uri", selectedImageUri);
-                startActivity(detailsIntent);
-                finish();
+//                Intent detailsIntent = new Intent(ClubManagementActivity.this, ClubDetailsActivity.class);
+//                detailsIntent.putExtra("club_name", clubName);
+//                detailsIntent.putExtra("club_description", clubDetail);
+//                detailsIntent.putExtra("club_main_image_uri", selectedImageUri);
+//                startActivity(detailsIntent);
+//                finish();
             }
         });
 
@@ -141,64 +143,67 @@ public class ClubManagementActivity extends AppCompatActivity {
     }
 
     private void saveClubInfo() {
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference clubRef = database.getReference("clubs");
+        database = FirebaseDatabase.getInstance().getReference();
+        firebaseAuth = FirebaseAuth.getInstance();
 
-        String userId = firebaseAuth.getCurrentUser().getUid();
+//        DatabaseReference clubRef = database.getReference("clubs");
+
+//        String userId = firebaseAuth.getCurrentUser().getUid();
         clubName = ((EditText) findViewById(R.id.editTextClubNameActivity)).getText().toString();
         clubDetail = ((EditText) findViewById(R.id.editTextClubActivity)).getText().toString();
 
+        database.child("clubs").child(clubName).child("clubDetail").setValue(clubDetail);
 
-        DatabaseReference membersRef = FirebaseDatabase.getInstance().getReference().child("users");
-
-        for (int i = 0; i < layoutClubOfficials.getChildCount(); i++) {
-
-            officialRef = clubRef.child(clubName);
-
-            LinearLayout layoutOfficial = (LinearLayout) layoutClubOfficials.getChildAt(i);
-            EditText editTextName = (EditText) layoutOfficial.getChildAt(1);
-            EditText editTextStudentNumber = (EditText) layoutOfficial.getChildAt(2);
-            EditText editTextMajor = (EditText) layoutOfficial.getChildAt(3);
-
-            String name = editTextName.getText().toString();
-            String studentNumber = editTextStudentNumber.getText().toString();
-            String major = editTextMajor.getText().toString();
-
-            membersRef.addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                    for (DataSnapshot memberSnapshot : dataSnapshot.getChildren()) {
-                        String uid = memberSnapshot.getKey();
-
-                        String users_name = memberSnapshot.child("name").getValue(String.class);
-                        String users_studentID = memberSnapshot.child("studentID").getValue(String.class);
-                        String users_major = memberSnapshot.child("major").getValue(String.class);
-
-                        if (name.equals(users_name) && studentNumber.equals(users_studentID) && major.equals(users_major)) {
-
-
-                            officialRef.child(uid).setValue("");
-
-                        } else {
-                            Log.d("error", "a");
-                        }
-                        count++;
-                    }
-                    if (count == dataSnapshot.getChildrenCount()) {
-                        Log.d("check", userId);
-                        officialRef.child("활동내용").setValue(clubDetail);
-                        officialRef.child(userId).setValue("");
-
-                    }
-
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-
-                }
-            });
+//        DatabaseReference membersRef = FirebaseDatabase.getInstance().getReference().child("users");
+//
+//        for (int i = 0; i < layoutClubOfficials.getChildCount(); i++) {
+//
+//            officialRef = clubRef.child(clubName);
+//
+//            LinearLayout layoutOfficial = (LinearLayout) layoutClubOfficials.getChildAt(i);
+//            EditText editTextName = (EditText) layoutOfficial.getChildAt(1);
+//            EditText editTextStudentNumber = (EditText) layoutOfficial.getChildAt(2);
+//            EditText editTextMajor = (EditText) layoutOfficial.getChildAt(3);
+//
+//            String name = editTextName.getText().toString();
+//            String studentNumber = editTextStudentNumber.getText().toString();
+//            String major = editTextMajor.getText().toString();
+//
+//            membersRef.addListenerForSingleValueEvent(new ValueEventListener() {
+//                @Override
+//                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//
+//                    for (DataSnapshot memberSnapshot : dataSnapshot.getChildren()) {
+//                        String uid = memberSnapshot.getKey();
+//
+//                        String users_name = memberSnapshot.child("name").getValue(String.class);
+//                        String users_studentID = memberSnapshot.child("studentID").getValue(String.class);
+//                        String users_major = memberSnapshot.child("major").getValue(String.class);
+//
+//                        if (name.equals(users_name) && studentNumber.equals(users_studentID) && major.equals(users_major)) {
+//
+//
+//                            officialRef.child(uid).setValue("");
+//
+//                        } else {
+//                            Log.d("error", "a");
+//                        }
+//                        count++;
+//                    }
+//                    if (count == dataSnapshot.getChildrenCount()) {
+//                        Log.d("check", userId);
+//                        officialRef.child("활동내용").setValue(clubDetail);
+//                        officialRef.child(userId).setValue("");
+//
+//                    }
+//
+//                }
+//
+//                @Override
+//                public void onCancelled(@NonNull DatabaseError error) {
+//
+//                }
+//            });
 //
 //            DatabaseReference officialRef = clubRef.child(clubName).push();
 //            officialRef.child("name").setValue(name);
@@ -206,7 +211,7 @@ public class ClubManagementActivity extends AppCompatActivity {
 //            officialRef.child("major").setValue(major);
 
             // 동아리 임원 정보를 저장하는 로직을 구현
-        }
+//        }
     }
     private void removeOfficialInputFields() {
         if (officialCount > 0) {

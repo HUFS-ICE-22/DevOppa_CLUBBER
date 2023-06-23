@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -12,7 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HACKATHON"
         tools:targetApi="31">
+        <activity android:name=".Sign_in"/>
         <activity
+
             android:name=".ClubManagementActivity"
             android:exported="false" />
         <activity
@@ -21,9 +25,6 @@
         <activity
             android:name=".BoardActivity"
             android:exported="false"/>
-            
-
-        <activity android:name=".Sign_in"/>
 
         <activity
             android:name=".Log_in"
@@ -33,6 +34,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
 
     </application>

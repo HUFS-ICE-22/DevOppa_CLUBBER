@@ -1,56 +1,75 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp">
-
-    <ImageView
-        android:id="@+id/imageViewMainImage"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_gravity="center"
-        android:scaleType="centerCrop" />
-
-    <Button
-        android:id="@+id/buttonChooseImage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="16dp"
-        android:text="갤러리에서 이미지 선택"
-        android:padding="8dp"
-        />
-
-    <EditText
-        android:id="@+id/editTextClubActivity"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:hint="동아리 활동에 대한 정보를 입력하세요."
-        android:padding="8dp"
-        />
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <LinearLayout
-        android:id="@+id/layoutClubOfficials"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
 
-    <Button
-        android:id="@+id/buttonAddOfficial"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="임원 추가" />
+        <ImageView
+            android:id="@+id/imageViewMainImage"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:scaleType="centerCrop" />
 
-    <Button
-        android:id="@+id/buttonSave"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="저장" />
+        <Button
+            android:id="@+id/buttonChooseImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:text="갤러리에서 이미지 선택"
+            android:padding="8dp" />
 
+        <EditText
+            android:id="@+id/editTextClubActivity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="동아리 활동에 대한 정보를 입력하세요."
+            android:padding="8dp" />
 
+        <LinearLayout
+            android:id="@+id/layoutClubOfficials"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
 
-</LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp">
+
+            <Button
+                android:id="@+id/buttonAddOfficial"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="임원 추가" />
+
+            <Space
+                android:layout_width="170dp"
+                android:layout_height="1dp" />
+
+            <Button
+                android:id="@+id/buttonRemoveOfficial"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="invisible"
+                android:text="임원 삭제" />
+
+        </LinearLayout>
+        <Button
+            android:id="@+id/buttonSave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="저장" />
+
+    </LinearLayout>
+</ScrollView>
+

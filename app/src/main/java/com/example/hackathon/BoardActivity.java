@@ -26,8 +26,8 @@ public class BoardActivity extends AppCompatActivity {
 
     private DatabaseReference database;
     private FirebaseAuth firebaseAuth;
-    List<Board> mDatas = new ArrayList<>(); // 샘플 데이터 추가
-    BoardAdapter mAdapter = new BoardAdapter(mDatas);;
+    List<Board> mDatas = new ArrayList<>();
+    BoardAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,69 +38,54 @@ public class BoardActivity extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
 
         RecyclerView mPostRecyclerView = findViewById(R.id.recyclerView);
-//        List<Board> mDatas = new ArrayList<>(); // 샘플 데이터 추가
-//        mDatas.add(new Board("title","contents","time",20,10));
-//        mDatas.add(new Board("title","contents","time",20,10));
-//        mDatas.add(new Board("title","contents","time",20,10));
-//        mDatas.add(new Board("title","contents","time",20,10));
-//        mDatas.add(new Board("title","contents","time",20,10));
+
+        mAdapter = new BoardAdapter(mDatas);
+        mAdapter.setOnItemClickListener(new BoardAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(Board item) {
+                String groupName = item.getTitle();
+                Intent intent = new Intent(BoardActivity.this,  ClubDetailsActivity.class);
+                intent.putExtra("clubName", groupName);
+                startActivity(intent);
+            }
+        });
 
         getGroups();
-//        Log.d("MainActivity", "onCreate - onClick : " + mDatas);
-
-        // Adapter, LayoutManager 연결
 
         mPostRecyclerView.setAdapter(mAdapter);
         mPostRecyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
     private void getGroups() {
-        //현재 사용자의 UID를 가져옴
-//        String userId = firebaseAuth.getCurrentUser().getUid();
-
-        //사용자가 포함된 그룹 정보 접근
         DatabaseReference userRef = database.child("clubs");
         userRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 mDatas.clear();
 
-                //데이터 스냅샷을 순회하며 그룹명을 가져와 리스트에 추가
                 for (DataSnapshot groupSnapshot : dataSnapshot.getChildren()) {
                     String groupName = groupSnapshot.getKey();
                     DatabaseReference groupRef = groupSnapshot.getRef();
                     groupRef.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                            //그룹명 가져오기
                             String groupContents = dataSnapshot.child("onelistsummary").getValue(String.class);
-                            Log.d("MainActivity", "onCreate - onClick : " + groupContents);
-                            //그룹명을 리스트에 추가
-                            mDatas.add(new Board(groupName, groupContents,"time",20,10));
-                            Log.d("MainActivity1", "onCreate - onClick : " + mDatas);
-
+                            mDatas.add(new Board(groupName, groupContents, "time", 20, 10));
                             mAdapter.notifyDataSetChanged();
                         }
 
-                        //데이터 읽기 실패할 경우 오류 발생
                         @Override
                         public void onCancelled(@NonNull DatabaseError databaseError) {
                             Log.e("Firebase", databaseError.getMessage());
                         }
                     });
                 }
-
-                Log.d("MainActivity2", "onCreate - onClick : " + mDatas);
             }
 
-            //데이터 읽기 실패할 경우 오류 발생
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 Log.e("Firebase", databaseError.getMessage());
             }
         });
-
-        Log.d("MainActivity3", "onCreate - onClick : " + mDatas);
     }
-
 }

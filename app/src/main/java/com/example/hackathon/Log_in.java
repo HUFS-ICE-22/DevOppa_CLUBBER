@@ -98,7 +98,7 @@ public class Log_in extends AppCompatActivity {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             if (snapshot.exists()) {
-                                int clubPresident = snapshot.child("club_president").getValue(Integer.class);
+                                int clubPresident = snapshot.child("club president").getValue(Integer.class);
                                 if (clubPresident == 1) {
 //                                    Intent intent = new Intent(Log_in.this, MenuActivity.class);
 //                                    startActivity(intent);

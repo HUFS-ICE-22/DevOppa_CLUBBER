@@ -66,8 +66,9 @@ public class ClubDetailsActivity extends AppCompatActivity {
 //        go_home.setOnClickListener(new View.OnClickListener() {
         // Intent에서 동아리 정보 및 이미지 URI 추출
         Intent intent = getIntent();
+
         if (intent != null) {
-            String clubName = intent.getStringExtra("club_name");
+            String clubName = intent.getStringExtra("clubName");
             String clubDescription = intent.getStringExtra("club_description");
             Uri clubMainImageUri = intent.getParcelableExtra("club_main_image_uri");
 
@@ -86,6 +87,7 @@ public class ClubDetailsActivity extends AppCompatActivity {
                         // 여기서 isInternal과 isVolunteer 변수를 활용하여 필요한 처리를 수행할 수 있습니다.
 
                     }
+                    getClubs(clubName);
                 }
 
                 @Override
@@ -107,9 +109,13 @@ public class ClubDetailsActivity extends AppCompatActivity {
 //            }
 //        });
 
-        getClubs(clubName);
+
+        }
+
+
     }
-    private void getClubs (String clubName) {
+
+    private void getClubs(String clubName) {
         database.child("clubs").child(clubName).child("clubDetail").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {//친구의 이름을 가져와서 출력
@@ -126,7 +132,6 @@ public class ClubDetailsActivity extends AppCompatActivity {
             }
         });
     }
-
 }
 
 

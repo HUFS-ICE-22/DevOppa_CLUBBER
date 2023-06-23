@@ -14,9 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         tools:targetApi="31">
-        <activity
-            android:name=".ManageClub"
-            android:exported="false" />
+<!--        <activity-->
+<!--            android:name=".ManageClub"-->
+<!--            android:exported="false" />-->
         <activity
             android:name=".ClubDetailsActivity"
             android:exported="false" />
@@ -30,6 +30,12 @@
         <activity
             android:name=".BoardActivity"
             android:exported="false" />
+        <activity
+            android:name=".AdminMenuActivity"
+            android:exported="false" />
+
+
+
         <activity
             android:name=".Log_in"
             android:exported="true">

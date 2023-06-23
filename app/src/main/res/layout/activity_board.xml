@@ -11,6 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
 
+        android:layout_margin="10dp"
+
         app:layout_constraintHeight_percent="0.1"
         tools:ignore="MissingConstraints">
 
@@ -24,6 +26,7 @@
             app:autoSizeTextType="uniform"
 
             app:layout_constraintLeft_toLeftOf="parent"/>
+
 
         <android.widget.Button
             android:layout_width="0dp"
@@ -43,8 +46,6 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
 
-        android:layout_marginTop="10dp"
-
         app:layout_constraintHeight_percent="0.1"
         app:layout_constraintTop_toBottomOf="@+id/statusbar">
 
@@ -52,9 +53,7 @@
             android:id="@+id/buttons_container1"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:overScrollMode="never"
-            android:scrollbars="none"
-            tools:ignore="SpeakableTextPresentCheck"
+            tools:ignore="MissingConstraints,SpeakableTextPresentCheck"
 
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
@@ -145,8 +144,6 @@
             android:id="@+id/buttons_container2"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:overScrollMode="never"
-            android:scrollbars="none"
             tools:ignore="SpeakableTextPresentCheck"
 
             android:paddingLeft="10dp"

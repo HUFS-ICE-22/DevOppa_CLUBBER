@@ -21,6 +21,7 @@ public class ClubManagementActivity extends AppCompatActivity {
     private Button buttonChooseImage;
     private Button buttonSave;
     private Button buttonRemoveOfficial;
+    private Uri selectedImageUri;
     private ImageView imageViewMainImage;
     private int REQUEST_IMAGE_GALLERY;
 
@@ -35,6 +36,7 @@ public class ClubManagementActivity extends AppCompatActivity {
         buttonAddOfficial = findViewById(R.id.buttonAddOfficial);
         buttonChooseImage = findViewById(R.id.buttonChooseImage);
         buttonRemoveOfficial = findViewById(R.id.buttonRemoveOfficial);
+        imageViewMainImage = findViewById(R.id.imageViewMainImage);
 
         buttonSave = findViewById(R.id.buttonSave);
 
@@ -70,8 +72,16 @@ public class ClubManagementActivity extends AppCompatActivity {
         buttonSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                Intent detailsIntent = new Intent(ClubManagementActivity.this, ClubDetailsActivity.class);
+                detailsIntent.putExtra("club_name", "동아리 이름"); // 동아리 이름을 적절한 값으로 변경
+                detailsIntent.putExtra("club_description", "동아리 설명"); // 동아리 설명을 적절한 값으로 변경
+                detailsIntent.putExtra("club_main_image_uri", selectedImageUri);
+                startActivity(detailsIntent);
                 saveClubInfo();
+
             }
+
         });
 
         // 초기에 1개의 동아리 임원 정보 입력 필드 생성
@@ -123,7 +133,6 @@ public class ClubManagementActivity extends AppCompatActivity {
             String studentNumber = editTextStudentNumber.getText().toString();
             String major = editTextMajor.getText().toString();
 
-            // 동아리 임원 정보를 저장하는 로직을 구현
         }
     }
     private void removeOfficialInputFields() {
@@ -145,10 +154,7 @@ public class ClubManagementActivity extends AppCompatActivity {
 
         if (requestCode == REQUEST_IMAGE_GALLERY && resultCode == RESULT_OK) {
             if (data != null) {
-                Uri selectedImageUri = data.getData();
-
-                // 선택한 이미지를 가져와서 사용할 수 있습니다.
-                // 예를 들어, ImageView에 표시하거나 업로드 등의 작업을 수행할 수 있습니다.
+                selectedImageUri = data.getData();
                 imageViewMainImage.setImageURI(selectedImageUri);
             }
         }

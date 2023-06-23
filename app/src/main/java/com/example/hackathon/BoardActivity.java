@@ -27,6 +27,7 @@ public class BoardActivity extends AppCompatActivity {
     private DatabaseReference database;
     private FirebaseAuth firebaseAuth;
     List<Board> mDatas = new ArrayList<>(); // 샘플 데이터 추가
+    BoardAdapter mAdapter = new BoardAdapter(mDatas);;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,8 +49,8 @@ public class BoardActivity extends AppCompatActivity {
 //        Log.d("MainActivity", "onCreate - onClick : " + mDatas);
 
         // Adapter, LayoutManager 연결
-        BoardAdapter mAdpater = new BoardAdapter(mDatas);
-        mPostRecyclerView.setAdapter(mAdpater);
+
+        mPostRecyclerView.setAdapter(mAdapter);
         mPostRecyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
@@ -77,6 +78,8 @@ public class BoardActivity extends AppCompatActivity {
                             //그룹명을 리스트에 추가
                             mDatas.add(new Board(groupName,"contents","time",20,10));
                             Log.d("MainActivity1", "onCreate - onClick : " + mDatas);
+
+                            mAdapter.notifyDataSetChanged();
                         }
 
                         //데이터 읽기 실패할 경우 오류 발생

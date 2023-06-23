@@ -26,6 +26,8 @@ public class ClubManagementActivity extends AppCompatActivity {
     private Button buttonRemoveOfficial;
     private Uri selectedImageUri;
     private ImageView imageViewMainImage;
+    private String clubName;
+    private String clubDetail;
     private int REQUEST_IMAGE_GALLERY;
 
     private int officialCount = 0;
@@ -60,7 +62,7 @@ public class ClubManagementActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 addOfficialInputFields();
-                buttonRemoveOfficial.setVisibility(View.VISIBLE); // 수정된 부분
+                buttonRemoveOfficial.setVisibility(View.VISIBLE);
             }
         });
 
@@ -76,12 +78,13 @@ public class ClubManagementActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                saveClubInfo();
                 Intent detailsIntent = new Intent(ClubManagementActivity.this, ClubDetailsActivity.class);
-                detailsIntent.putExtra("club_name", "동아리 이름"); // 동아리 이름을 적절한 값으로 변경
-                detailsIntent.putExtra("club_description", "동아리 설명"); // 동아리 설명을 적절한 값으로 변경
+                detailsIntent.putExtra("club_name", clubName);
+                detailsIntent.putExtra("club_description", clubDetail);
                 detailsIntent.putExtra("club_main_image_uri", selectedImageUri);
                 startActivity(detailsIntent);
-                saveClubInfo();
+                finish();
             }
         });
 
@@ -123,9 +126,8 @@ public class ClubManagementActivity extends AppCompatActivity {
     private void saveClubInfo() {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference clubRef = database.getReference("clubs");
-        // 동아리 정보와 동아리 임원 정보를 저장하는 로직을 구현
-        // 동아리 회장이 설정한 정보를 앱 내부에 저장하거나 서버에 업로드하는 등의 처리를 수행
-        String clubName = ((EditText) findViewById(R.id.editTextClubActivity)).getText().toString();
+        clubName = ((EditText) findViewById(R.id.editTextClubNameActivity)).getText().toString();
+        clubDetail = ((EditText) findViewById(R.id.editTextClubActivity)).getText().toString();
 
         for (int i = 0; i < layoutClubOfficials.getChildCount(); i++) {
             LinearLayout layoutOfficial = (LinearLayout) layoutClubOfficials.getChildAt(i);

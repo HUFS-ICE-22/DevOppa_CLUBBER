@@ -121,10 +121,13 @@ public class ClubManagementActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 saveClubInfo();
-                Intent detailsIntent = new Intent(ClubManagementActivity.this, BoardActivity.class);
-
-                startActivity(detailsIntent);
-                finish();
+                if (clubName.isEmpty() || clubDetail.isEmpty()) {
+                    Toast.makeText(ClubManagementActivity.this, "입력 필드를 모두 채워주세요.", Toast.LENGTH_SHORT).show();
+                } else {
+                    Intent detailsIntent = new Intent(ClubManagementActivity.this, BoardActivity.class);
+                    startActivity(detailsIntent);
+                    finish();
+                }
             }
         });
 

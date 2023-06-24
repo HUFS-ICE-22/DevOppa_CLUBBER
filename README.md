@@ -15,7 +15,7 @@ Android Studio, Firebase를 활용한 대학생 동아리 관리, 신청 앱 입
 신청할 수 있는 대학교 동아리 리스트를 분류에 따라 정리하고, D-Day를 제공하여 정보 수집을 편리하게 한다.
 
 ## 관련 자료
-- [APK download](https://github.com/HUFS-ICE-22/HUFSUMMERHACKATHON)
+- [APK download]([https://github.com/HUFS-ICE-22/HUFSUMMERHACKATHON](https://drive.google.com/file/d/1OYVqpNBEiBZMtjUyl8AzKQhCz_oeKm-M/view?usp=sharing))
 - [PPT](https://docs.google.com/presentation/d/1UKmHFIgtvoKfX_125DQhdjLb8DPfMXB7/edit?usp=sharing&ouid=108689342610417301422&rtpof=true&sd=true)
 - [PDF](https://drive.google.com/file/d/1AqBSC8ilQQtGB1t4xFqFJkKqAERoXOGB/view?usp=sharing)
 - [Notion Teamspace](https://seen-petalite-496.notion.site/HUFSUMMER-HACKATHON-d0af88b98568423ab8d96dcfa5a4d332?pvs=4)

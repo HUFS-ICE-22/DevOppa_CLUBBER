@@ -1,13 +1,12 @@
-### 2023 HUFSUMMER HACKATHON
-# CLUBBER
-Android Studio, Firebase를 활용한 대학생 동아리 관리, 신청 앱 입니다.
-
-## 팀 소개
-DevOppa 팀
+# DevOppa 팀
+in 2023 HUFSUMMER HACKATHON
 - 김건우
 - 김동규
 - 이우림
 - 원종윤
+
+# CLUBBER 애플리케이션
+Android Studio, Firebase를 활용한 대학생 동아리 관리, 신청 앱 입니다.
 
 ## 개발 동기
 대학교 동아리에 대한 정보가 잘 정리되어 있지 않아, 원하는 동아리를 찾고 신청하기 어려워 해당 앱을 제작하였습니다. 

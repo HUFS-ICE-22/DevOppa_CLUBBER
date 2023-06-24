@@ -38,7 +38,6 @@ public class myprofile1 extends AppCompatActivity {
         textViewStudentID = findViewById(R.id.textViewStudentID);
         textViewMajor = findViewById(R.id.textViewMajor);
         textViewEmail = findViewById(R.id.textViewEmail);
-        textViewPhoneNumber = findViewById(R.id.textViewPhoneNumber);
 
         mAuth = FirebaseAuth.getInstance();
         // 현재 사용자 ID 가져오기
@@ -59,14 +58,12 @@ public class myprofile1 extends AppCompatActivity {
                     String studentID = dataSnapshot.child("studentID").getValue(String.class);
                     String major = dataSnapshot.child("major").getValue(String.class);
                     String email = dataSnapshot.child("email").getValue(String.class);
-                    String phoneNumber = dataSnapshot.child("phoneNumber").getValue(String.class);
 
                     // 값을 UI에 설정
                     textViewName.setText(name);
-                    textViewStudentID.setText("학번: " + studentID);
-                    textViewMajor.setText("전공: " + major);
-                    textViewEmail.setText("이메일: " + email);
-                    textViewPhoneNumber.setText("전화번호: " + phoneNumber);
+                    textViewStudentID.setText(studentID);
+                    textViewMajor.setText(major);
+                    textViewEmail.setText(email);
                 }
             }
 

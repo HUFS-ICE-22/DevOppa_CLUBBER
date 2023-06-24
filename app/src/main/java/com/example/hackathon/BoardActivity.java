@@ -25,6 +25,7 @@ import java.util.List;
 public class BoardActivity extends AppCompatActivity {
     Button profileButton;
 
+
     private DatabaseReference database;
     private FirebaseAuth firebaseAuth;
     List<Board> mDatas = new ArrayList<>();
@@ -34,12 +35,14 @@ public class BoardActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_board);
+        profileButton = findViewById(R.id.profileButton);
 
         profileButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), myprofile1.class);
                 startActivity(intent);
+                finish();
             }
         });
 

@@ -174,6 +174,10 @@ public class ClubManagementActivity extends AppCompatActivity {
         clubName = ((EditText) findViewById(R.id.editTextClubNameActivity)).getText().toString();
         clubDetail = ((EditText) findViewById(R.id.editTextClubActivity)).getText().toString();
 
+        DatabaseReference categoriesRef = clubRef.child(clubName).child("categories");
+        categoriesRef.child("internal").setValue(isInternal);
+        categoriesRef.child("volunteer").setValue(isVolunteer);
+
 
             DatabaseReference membersRef = FirebaseDatabase.getInstance().getReference().child("users");
 

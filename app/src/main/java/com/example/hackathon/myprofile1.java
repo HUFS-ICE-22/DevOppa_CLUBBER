@@ -2,7 +2,10 @@ package com.example.hackathon;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -23,6 +26,8 @@ public class myprofile1 extends AppCompatActivity {
     private TextView textViewEmail;
     private TextView textViewPhoneNumber;
 
+    Button button;
+
     private DatabaseReference userRef;
     private FirebaseAuth mAuth;
     private String currentUserID;
@@ -38,6 +43,16 @@ public class myprofile1 extends AppCompatActivity {
         textViewStudentID = findViewById(R.id.textViewStudentID);
         textViewMajor = findViewById(R.id.textViewMajor);
         textViewEmail = findViewById(R.id.textViewEmail);
+
+        button = findViewById(R.id.back);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                finish();
+            }
+        });
 
         mAuth = FirebaseAuth.getInstance();
         // 현재 사용자 ID 가져오기

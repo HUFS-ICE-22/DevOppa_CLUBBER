@@ -23,6 +23,9 @@
         <activity
             android:name=".ClubDetailsActivity"
             android:exported="false" />
+        <activity
+            android:name=".AdminMenuActivity"
+            android:exported="false" />
         <activity android:name=".Sign_in" />
         <activity
             android:name=".ClubManagementActivity"
@@ -33,9 +36,9 @@
         <activity
             android:name=".BoardActivity"
             android:exported="false" />
-        <activity
-            android:name=".AdminMenuActivity"
-            android:exported="false" />
+
+
+
 
 
 

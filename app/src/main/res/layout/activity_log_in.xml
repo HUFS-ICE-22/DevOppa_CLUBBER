@@ -42,31 +42,37 @@
 
 
     <!--로그인 화면의 아이디 입력칸-->
+
+
+    <!--로그인 화면의 비밀번호 입력칸-->
     <EditText
         android:id="@+id/editText_email"
         android:layout_width="370dp"
         android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="172dp"
+        android:layout_marginEnd="8dp"
         android:hint="ID"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.756"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toTopOf="parent" />
 
+    <!--로그인 버튼
+        android:background를 이용하여 모양과 색깔을 버튼에 적용-->
 
-    <!--로그인 화면의 비밀번호 입력칸-->
+    <!--회원가입 버튼-->
     <EditText
         android:id="@+id/editText_Password"
         android:layout_width="370dp"
         android:layout_height="50dp"
         android:hint="password"
         android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/editText_email"
+        app:layout_constraintHorizontal_bias="0.756"
+        app:layout_constraintStart_toStartOf="@+id/editText_email"
         app:layout_constraintTop_toBottomOf="@+id/editText_email" />
 
-    <!--로그인 버튼
-        android:background를 이용하여 모양과 색깔을 버튼에 적용-->
-
-    <!--회원가입 버튼-->
     <Button
         android:id="@+id/button_login"
         android:layout_width="0dp"
@@ -93,16 +99,6 @@
         app:layout_constraintEnd_toEndOf="@+id/button_login"
         app:layout_constraintStart_toStartOf="@+id/button_login"
         app:layout_constraintTop_toBottomOf="@+id/button_login" />
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="76dp"
-        android:text="Button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_sign_in" />
 
     <!--비회원으로 메뉴를 이용하고 싶을 때 사용하는 버튼(디버그용)-->
     <!--    <Button-->

@@ -44,7 +44,7 @@ public class AdminMenuActivity extends AppCompatActivity {
         button_myProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AdminMenuActivity.this, MyProfile.class);
+                Intent intent = new Intent(AdminMenuActivity.this, myprofile1.class);
                 startActivity(intent);
             }
         });

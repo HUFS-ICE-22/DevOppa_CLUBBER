@@ -1,6 +1,7 @@
 package com.example.hackathon;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
@@ -147,6 +148,8 @@ public class ClubManagementActivity extends AppCompatActivity {
 
         TextView titleText = new TextView(this);
         titleText.setText("임원 정보 추가");
+        titleText.setTextSize(24);
+        titleText.setTypeface(null, Typeface.BOLD);
         layoutOfficial.addView(titleText);
 
         EditText editTextName = new EditText(this);
@@ -188,6 +191,8 @@ public class ClubManagementActivity extends AppCompatActivity {
             EditText editTextName = (EditText) layoutOfficial.getChildAt(1);
             EditText editTextStudentNumber = (EditText) layoutOfficial.getChildAt(2);
             EditText editTextMajor = (EditText) layoutOfficial.getChildAt(3);
+
+
 
             String name = editTextName.getText().toString();
             String studentNumber = editTextStudentNumber.getText().toString();
@@ -258,6 +263,7 @@ public class ClubManagementActivity extends AppCompatActivity {
             if (data != null) {
                 selectedImageUri = data.getData();
                 imageViewMainImage.setImageURI(selectedImageUri);
+
             }
         }
     }

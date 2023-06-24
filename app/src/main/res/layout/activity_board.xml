@@ -29,6 +29,7 @@
 
 
         <android.widget.Button
+            android:id="@+id/profileButton"
             android:layout_width="0dp"
             android:layout_height="match_parent"
 

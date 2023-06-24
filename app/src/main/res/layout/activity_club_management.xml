@@ -86,12 +86,12 @@
 
         <EditText
             android:id="@+id/editTextClubActivity"
-            android:autoSizeTextType="uniform"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:hint="동아리 활동에 대한 정보를 입력하세요."
-            android:layout_marginBottom="8dp" />
+            android:layout_marginBottom="8dp"
+            android:autoSizeTextType="uniform"
+            android:hint="동아리 활동에 대한 정보를 입력하세요." />
 
         <LinearLayout
             android:id="@+id/layoutClubOfficials"

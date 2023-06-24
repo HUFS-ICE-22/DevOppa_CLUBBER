@@ -34,6 +34,12 @@
             android:name=".BoardActivity"
             android:exported="false" />
         <activity
+            android:name=".AdminMenuActivity"
+            android:exported="false" />
+
+
+
+        <activity
             android:name=".Log_in"
             android:exported="true">
             <intent-filter>

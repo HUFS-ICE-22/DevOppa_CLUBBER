@@ -31,6 +31,7 @@ public class ClubDetailsActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
 
     private Button go_home;
+    private Button go_resister;
     private DatabaseReference clubRef;
     private String clubName;
     private String clubDetail;
@@ -45,6 +46,7 @@ public class ClubDetailsActivity extends AppCompatActivity {
         textViewClubDescription = findViewById(R.id.textViewClubDescription);
         imageViewClubMain = findViewById(R.id.imageViewClubMain);
         go_home = findViewById(R.id.go_home);
+        go_resister = findViewById(R.id.go_register);
 
         // Intent에서 동아리 정보 및 이미지 URI 추출
 //        Intent intent = getIntent();
@@ -111,8 +113,6 @@ public class ClubDetailsActivity extends AppCompatActivity {
 
 
         }
-
-
     }
 
     private void getClubs(String clubName) {

@@ -1,6 +1,7 @@
 package com.example.hackathon;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
@@ -145,6 +146,8 @@ public class ClubManagementActivity extends AppCompatActivity {
 
         TextView titleText = new TextView(this);
         titleText.setText("임원 정보 추가");
+        titleText.setTextSize(24);
+        titleText.setTypeface(null, Typeface.BOLD);
         layoutOfficial.addView(titleText);
 
         EditText editTextName = new EditText(this);
@@ -166,12 +169,14 @@ public class ClubManagementActivity extends AppCompatActivity {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference clubRef = database.getReference("clubs");
 
-
         String userId = firebaseAuth.getCurrentUser().getUid();
-
 
         clubName = ((EditText) findViewById(R.id.editTextClubNameActivity)).getText().toString();
         clubDetail = ((EditText) findViewById(R.id.editTextClubActivity)).getText().toString();
+
+        DatabaseReference categoriesRef = clubRef.child(clubName).child("categories");
+        categoriesRef.child("internal").setValue(isInternal);
+        categoriesRef.child("volunteer").setValue(isVolunteer);
 
 
             DatabaseReference membersRef = FirebaseDatabase.getInstance().getReference().child("users");

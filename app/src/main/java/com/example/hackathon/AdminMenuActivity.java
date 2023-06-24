@@ -44,7 +44,7 @@ public class AdminMenuActivity extends AppCompatActivity {
         button_myProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AdminMenuActivity.this, MyProfile.class);
+                Intent intent = new Intent(AdminMenuActivity.this, myprofile1.class);
                 startActivity(intent);
             }
         });
@@ -60,9 +60,9 @@ public class AdminMenuActivity extends AppCompatActivity {
         button_manageClub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(AdminMenuActivity.this, ManageClub.class);
-//                startActivity(intent);
-//                finish();
+                Intent intent = new Intent(AdminMenuActivity.this, ManageClub.class);
+                startActivity(intent);
+                finish();
             }
         });
 

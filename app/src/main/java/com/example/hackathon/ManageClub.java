@@ -2,6 +2,7 @@ package com.example.hackathon;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -17,6 +18,7 @@ public class ManageClub extends AppCompatActivity {
     private EditText editTextClubDescription;
     private EditText editTextContactInfo;
     private Button buttonUpdate;
+    private Button buttonBack;
 
     private DatabaseReference clubRef;
 
@@ -29,6 +31,7 @@ public class ManageClub extends AppCompatActivity {
         editTextClubDescription = findViewById(R.id.editTextClubDescription);
         editTextContactInfo = findViewById(R.id.editTextContactInfo);
         buttonUpdate = findViewById(R.id.buttonUpdate);
+        buttonBack = findViewById(R.id.buttonBack);
 
         clubRef = FirebaseDatabase.getInstance().getReference().child("clubs");
 
@@ -36,6 +39,15 @@ public class ManageClub extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 updateClubInfo();
+            }
+        });
+
+        buttonBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), AdminMenuActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
 

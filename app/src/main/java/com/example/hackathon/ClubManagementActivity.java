@@ -203,7 +203,7 @@ public class ClubManagementActivity extends AppCompatActivity {
                             if (name.equals(users_name) && studentNumber.equals(users_studentID) && major.equals(users_major)) {
 
 
-                                clubRef.child(clubName).child(uid).setValue("1");
+                                clubRef.child(clubName).child(uid).setValue("");
 
                             } else {
                                 Log.d("adlsfjlaskdfjlaksdfjas;dlfjdasl;fj", clubName);
@@ -215,8 +215,8 @@ public class ClubManagementActivity extends AppCompatActivity {
                             clubRef.child(clubName).child("categories").child("internal").setValue(isInternal);
                             clubRef.child(clubName).child("categories").child("volunteer").setValue(isVolunteer);
                             Log.d("check", userId);
-                            clubRef.child(clubName).child("활동내용").setValue(clubDetail);
-                            clubRef.child(clubName).child(userId).setValue("1");
+                            clubRef.child(clubName).child("clubDetail").setValue(clubDetail);
+                            clubRef.child(clubName).child(userId).setValue("");
 
                         }
 
